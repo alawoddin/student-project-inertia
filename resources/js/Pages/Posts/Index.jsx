@@ -16,7 +16,10 @@ export default function Dashboard({ posts }) {
                 <div className="mx-auto max-w-7xl sm:px-6 lg:px-8">
                     <div className="overflow-hidden bg-white shadow-sm sm:rounded-lg">
                         {posts.map((post) => (
+                            
                             <div key={post.id} className="p-6 text-gray-900 border-b">
+                                <span>{post.user.name}</span><br />
+
                                 {post.body}
                             </div>
                         ))}
