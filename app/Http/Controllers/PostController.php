@@ -16,4 +16,9 @@ class PostController extends Controller
         'posts' => $posts,
     ]);
 }
+
+  public function Store(Request $request)
+    {
+        dd($request->all());
+    }
 }
