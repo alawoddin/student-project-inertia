@@ -2,7 +2,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
 import { Head,useForm } from '@inertiajs/react';
 
 export default function Dashboard({ auth,posts }) {
-    const { data, setData, post, processing, errors , reset } = useForm({
+    const { data, setData, post, processing, errors , reset, clearErrors } = useForm({
         body: '',
       })
 
@@ -33,7 +33,8 @@ export default function Dashboard({ auth,posts }) {
                     <label htmlFor="body" className="sr-only text-dark">Body</label>
                     <textarea
                     onChange={e => setData('body', e.target.value)}
-                        name="body"
+                        onFocus={() => clearErrors('body')}
+                        name="body"   
                         id="body"
                         cols="30"
                         rows="5"
