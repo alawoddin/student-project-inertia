@@ -1,5 +1,6 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head,useForm,router,Link  } from '@inertiajs/react';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Dashboard({ auth, posts , greeting  }) {
     const { data, setData, post, processing, errors, reset, clearErrors } =
@@ -12,6 +13,9 @@ export default function Dashboard({ auth, posts , greeting  }) {
         post(route("store.post"), {
             onSuccess: () => {
                 reset("body");
+            toast.success('Post Create Successfully !' , {
+                position: 'top-right',
+            })
             },
         });
     }
@@ -35,9 +39,10 @@ export default function Dashboard({ auth, posts , greeting  }) {
             <Head title="Posts">
                 <meta name="description" content="Posts Index" />
             </Head>
-                     {greeting}
 
             <div className="py-12">
+                     {greeting}
+
                 {/* { data.body } */}
                 <div className="max-w-3xl mx-auto sm:px-6 lg:px-8 space-y-3">
                      {/* {now} */}
