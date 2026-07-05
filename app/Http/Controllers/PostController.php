@@ -12,15 +12,17 @@ class PostController extends Controller
    public function Index()
 {
     $posts = Post::with('user')->latest()->get();
-
+    $now = now();
     return Inertia::render('Posts/Index', [
         'posts' => $posts,
+        'now' => $now,
     ]);
 }
 
   public function Store(StorePostRequest  $request)
     {
         // dd($request->validate('body'));
+        sleep(3);
         auth()->user()->posts()->create(
             $request->validated()
         );
