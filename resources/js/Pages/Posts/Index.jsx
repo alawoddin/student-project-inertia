@@ -1,7 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head,useForm,router,Link  } from '@inertiajs/react';
 
-export default function Dashboard({ auth, posts , now  }) {
+export default function Dashboard({ auth, posts , greeting  }) {
     const { data, setData, post, processing, errors, reset, clearErrors } =
         useForm({
             body: "",
@@ -35,11 +35,12 @@ export default function Dashboard({ auth, posts , now  }) {
             <Head title="Posts">
                 <meta name="description" content="Posts Index" />
             </Head>
+                     {greeting}
 
             <div className="py-12">
                 {/* { data.body } */}
                 <div className="max-w-3xl mx-auto sm:px-6 lg:px-8 space-y-3">
-                     {now}
+                     {/* {now} */}
                     <form
                         onSubmit={submit}
                         className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6"
