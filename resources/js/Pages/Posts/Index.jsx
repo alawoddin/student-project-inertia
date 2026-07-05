@@ -1,5 +1,5 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head,useForm,router } from '@inertiajs/react';
+import { Head,useForm,router,Link  } from '@inertiajs/react';
 
 export default function Dashboard({ auth, posts , now  }) {
     const { data, setData, post, processing, errors, reset, clearErrors } =
@@ -16,14 +16,13 @@ export default function Dashboard({ auth, posts , now  }) {
         });
     }
 
-       function refreshPosts(){
-            console.log('refreshing posts');
-            router.visit(route('posts.index'),{
+          function refreshPosts() {
+            router.visit(route('all.post'),{
                 only: ['posts'],
                 preserveScroll : true
             })
         }
-        
+
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -74,13 +73,24 @@ export default function Dashboard({ auth, posts , now  }) {
                         </button>
                     </form>
                      <div className="py-3 flex justify-center">
-                    <button
+                    <Link
+                    href={route('all.post')}
+                    only={['posts']}
+                    preserveScroll
+                        className="text-sm text-indigo-700"
+                        type="button"
+                    >
+                        Refresh posts
+                    </Link>
+
+                     {/* <button
                     onClick={refreshPosts}
                         className="text-sm text-indigo-700"
                         type="button"
                     >
                         Refresh posts
                     </button>
+                    </button> */}
                 </div>
 
                     {posts.map((post) => {
