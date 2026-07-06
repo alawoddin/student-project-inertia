@@ -3,6 +3,8 @@ import './bootstrap';
 
 import { createInertiaApp } from '@inertiajs/react';
 import { createRoot } from 'react-dom/client';
+import toast, { Toaster } from 'react-hot-toast';
+
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
 
