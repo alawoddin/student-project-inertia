@@ -5,7 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 export default function Dashboard({ auth, posts , greeting ,message  }) {
     const { data, setData, post, processing, errors, reset, clearErrors } =
-        useForm({
+        useForm("StorePost", {
             body: "",
         });
 
@@ -35,7 +35,9 @@ export default function Dashboard({ auth, posts , greeting ,message  }) {
           function refreshPosts() {
             router.visit(route('all.post'),{
                 only: ['posts'],
-                preserveScroll : true
+                preserveScroll : true,
+                preserveState : true,
+               
             })
         }
 
