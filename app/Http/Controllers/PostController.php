@@ -23,9 +23,12 @@ class PostController extends Controller
     {
         // dd($request->validate('body'));
         sleep(3);
-        auth()->user()->posts()->create(
-            $request->validated()
-        );
-        return redirect()->route('all.post');
+        // auth()->user()->posts()->create(
+        //     $request->validated()
+        // );
+        return redirect()->route('all.post')->with('message' , [
+            "type" => 'success',
+            'body' => "Post created successfully"
+        ]);
     }
 }

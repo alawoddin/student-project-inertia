@@ -1,12 +1,24 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head,useForm,router,Link  } from '@inertiajs/react';
+import { Head,useForm,router,Link, usePage  } from '@inertiajs/react';
+import { useEffect } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 
-export default function Dashboard({ auth, posts , greeting  }) {
+export default function Dashboard({ auth, posts , greeting ,message  }) {
     const { data, setData, post, processing, errors, reset, clearErrors } =
         useForm({
             body: "",
         });
+
+        const page = usePage();
+
+        useEffect(() => {
+            if (page?.props?.message?.body) {       
+            toast(page.props.message.body , {
+                type: page.props.message.type,
+                position: 'top-right',
+            })
+        }
+        } , [page.props.message]);
 
     function submit(e) {
         e.preventDefault();
