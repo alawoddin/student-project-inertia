@@ -60,7 +60,8 @@ export default function Dashboard({ auth, posts , greeting ,message  }) {
                 {/* { data.body } */}
                 <div className="max-w-3xl mx-auto sm:px-6 lg:px-8 space-y-3">
                      {/* {now} */}
-                    <form
+                {page.props.can.post_create && (
+                     <form
                         onSubmit={submit}
                         className="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6"
                     >
@@ -92,6 +93,8 @@ export default function Dashboard({ auth, posts , greeting ,message  }) {
                             Post
                         </button>
                     </form>
+
+                )}
                      <div className="py-3 flex justify-center">
                     <Link
                     href={route('all.post')}

@@ -11,6 +11,7 @@ class PostController extends Controller
 {
    public function Index()
 {
+    // dd(auth()->user()->hashVerifiedEmail());
     $posts = Post::with('user')->latest()->get();
     $now = now();
     return Inertia::render('Posts/Index', [
@@ -27,8 +28,8 @@ class PostController extends Controller
         //     $request->validated()
         // );
         return redirect()->route('all.post')->with('message' , [
-            "type" => 'success',
-            'body' => "Post created successfully"
+            // "type" => 'success',
+            // 'body' => "Post created successfully"
         ]);
     }
 }
